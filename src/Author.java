@@ -15,17 +15,27 @@ public class Author {
         return this.lastName;
     }
 
+    @Override
+    public String toString() {
+        return "Author{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Book book = (Book) o;
-        return book == book;
+        Author author = (Author) o;
+        return firstName.equals(author.firstName) &&
+                lastName.equals(author.lastName);
     }
 
-
+    @Override
     public int hashCode() {
-        int result = lastName != null ? lastName.hashCode() : 0;
+        int result = firstName.hashCode();
+        result = 31 * result + lastName.hashCode();
         return result;
     }
 }
-
